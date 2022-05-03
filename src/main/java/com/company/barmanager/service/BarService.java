@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Service
 public class BarService {
-
-
     private final BarRepository barRepository;
 
     @Autowired
-    public BarService barService(BarRepository barRepository){
+    public BarService(BarRepository barRepository){
         this.barRepository = barRepository;
     }
+
+
 }

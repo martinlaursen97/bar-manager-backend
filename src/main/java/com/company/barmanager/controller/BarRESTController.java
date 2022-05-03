@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/sale-line-item")
+@RequestMapping("api/bar")
 public class BarRESTController {
 
     private final BarService barService;
 
+    @Autowired
     public BarRESTController(BarService barService){
         this.barService = barService;
     }
