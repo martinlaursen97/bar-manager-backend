@@ -1,5 +1,6 @@
 package com.company.barmanager.controller;
 
+import com.company.barmanager.exception.LoginException;
 import com.company.barmanager.model.User;
 import com.company.barmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class UserRESTController {
     @PostMapping()
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<User> verifyLogin(@RequestBody User user) throws LoginException {
+        User userVerified = userService.verifyLogin(user);
+        return new ResponseEntity<>(userVerified, HttpStatus.OK);
     }
 }
