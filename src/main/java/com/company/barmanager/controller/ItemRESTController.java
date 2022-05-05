@@ -35,7 +35,6 @@ public class ItemRESTController {
     return new ResponseEntity<>(itemService.getItemsByBarId(id), HttpStatus.OK);
   }
 
-
   @PutMapping("/{id}")
   public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item){
     item.setId(id);
