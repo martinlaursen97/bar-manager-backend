@@ -21,8 +21,7 @@ public class Bar {
   @Column(name = "bar_name")
   private String barName;
 
-  @OneToMany(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "bar_id")
+  @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
   private List<Item> items;
 
 

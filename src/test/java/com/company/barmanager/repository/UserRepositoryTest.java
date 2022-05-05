@@ -34,4 +34,5 @@ class UserRepositoryTest {
 
         Assertions.assertNotNull(createdUser);
     }
+
 }

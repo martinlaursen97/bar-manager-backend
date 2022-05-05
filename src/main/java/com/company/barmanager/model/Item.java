@@ -1,5 +1,6 @@
 package com.company.barmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,13 +19,13 @@ public class Item {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @JsonBackReference
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "bar_id")
   private Bar bar;
 
-  @OneToMany(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "item_id")
-  private List<SaleLineItem> saleLineItem;
+  //@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+  //private List<SaleLineItem> saleLineItem;
 
   @Column(name = "item_name")
   private String itemName;
