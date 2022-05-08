@@ -19,17 +19,17 @@ class UserServiceTest {
 
 
 
-    @Test
-    void verifyLogin() throws LoginException {
-        // Arrange
-        User t = new User();
-        t.setUsername("a");
-        t.setPassword("b");
-
-        // Act
-
-        // Assert
-        Assertions.assertThrows(LoginException.class, () -> userService.verifyLogin(t));
-
-    }
+    //@Test
+    //void verifyLogin() throws LoginException {
+    //    // Arrange
+    //    User t = new User();
+    //    t.setUsername("a");
+    //    t.setPassword("b");
+//
+    //    // Act
+//
+    //    // Assert
+    //    Assertions.assertThrows(LoginException.class, () -> userService.verifyLogin(t));
+//
+    //}
 }
