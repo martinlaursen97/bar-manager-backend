@@ -21,4 +21,8 @@ public class BarService {
     public List<Bar> findAll() {
         return barRepository.findAll();
     }
+
+    public Bar save(Bar bar) {
+        return barRepository.save(bar);
+    }
 }
