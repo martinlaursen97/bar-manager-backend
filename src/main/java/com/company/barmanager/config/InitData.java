@@ -34,6 +34,8 @@ public class InitData implements CommandLineRunner {
 
         Bar bar1 = new Bar();
 
+
+
         bar1.setBarName("bar1");
 
         Item i1 = new Item();
