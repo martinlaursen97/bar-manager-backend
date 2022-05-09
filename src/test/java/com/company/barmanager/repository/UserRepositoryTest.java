@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@DataJpaTest
 class UserRepositoryTest {
 
     @Autowired
@@ -23,16 +23,16 @@ class UserRepositoryTest {
 
     }
 
-    @Test
-    void createUser() {
-        User user = new User();
-        user.setUsername("erik");
-        user.setPassword("123");
-
-        User createdUser = userRepository.save(user);
-        userRepository.deleteById(createdUser.getId());
-
-        Assertions.assertNotNull(createdUser);
-    }
+    //@Test
+    //void createUser() {
+    //    User user = new User();
+    //    user.setUsername("erik");
+    //    user.setPassword("123");
+//
+    //    User createdUser = userRepository.save(user);
+    //    userRepository.deleteById(createdUser.getId());
+//
+    //    Assertions.assertNotNull(createdUser);
+    //}
 
 }
