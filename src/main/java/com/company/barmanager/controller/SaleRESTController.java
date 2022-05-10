@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/sale")
+@RequestMapping("/api/sales")
 public class SaleRESTController {
 
   private final SaleService saleService;

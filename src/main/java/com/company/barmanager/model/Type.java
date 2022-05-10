@@ -1,5 +1,4 @@
 package com.company.barmanager.model;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,16 +10,14 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Sale {
+public class Type {
 
   @Id
-  @Column(name = "sale_id")
+  @Column(name = "type_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "sale_date")
-  private Date saleDate;
+  @Column(name = "type_name")
+  private String typeName;
 
-  @Column(name = "total_price")
-  private Double totalPrice;
 }

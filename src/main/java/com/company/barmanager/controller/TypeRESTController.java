@@ -1,7 +1,8 @@
 package com.company.barmanager.controller;
 
-import com.company.barmanager.model.Bar;
-import com.company.barmanager.service.BarService;
+import com.company.barmanager.model.Type;
+import com.company.barmanager.service.TypeService;
+import com.company.barmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,19 +15,19 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/bars")
-public class BarRESTController {
+@RequestMapping("/api/types")
+public class TypeRESTController {
 
-    private final BarService barService;
+  private final TypeService typeService;
 
-    @Autowired
-    public BarRESTController(BarService barService){
-        this.barService = barService;
-    }
+  @Autowired
+  public TypeRESTController(TypeService typeService) {
+    this.typeService = typeService;
+  }
 
-    @GetMapping
-    public ResponseEntity<List<Bar>> getBars(){
-        return new ResponseEntity<>(barService.findAll(), HttpStatus.OK);
-    }
+  @GetMapping
+  public ResponseEntity<List<Type>> getAllTypes(){
+    return new ResponseEntity<>(typeService.findAll(), HttpStatus.OK);
+  }
 
 }
