@@ -52,7 +52,7 @@ public class InitData implements CommandLineRunner {
 
 
 
-        bar1.setBarName("bar1");
+        bar1.setBarName("Brygger hesten");
 
         Item i1 = new Item();
         i1.setAmountNo(5);
@@ -94,7 +94,7 @@ public class InitData implements CommandLineRunner {
 
         Bar bar2 = new Bar();
 
-        bar2.setBarName("alpehytten");
+        bar2.setBarName("Alpehytten");
 
         Item j1 = new Item();
         j1.setAmountNo(1);
