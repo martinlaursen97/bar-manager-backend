@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -24,16 +24,13 @@ public class Item {
   @JoinColumn(name = "bar_id")
   private Bar bar;
 
-  //@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-  //private List<SaleLineItem> saleLineItem;
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "type_id")
+  private Type type;
 
   @Column(name = "item_name")
   private String itemName;
 
   @Column(name = "amount_no")
   private Integer amountNo;
-
-  private Double price;
-
-
 }

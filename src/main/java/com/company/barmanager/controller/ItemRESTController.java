@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/item")
+@RequestMapping("api/items")
 public class ItemRESTController {
 
   private final ItemService itemService;

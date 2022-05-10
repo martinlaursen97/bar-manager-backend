@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/sale-line-item")
+@RequestMapping("api/sale-line-items")
 public class SaleLineItemRESTController {
 
     private final SaleLineItemService saleLineItemService;

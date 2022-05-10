@@ -2,6 +2,7 @@ package com.company.barmanager.config;
 
 import com.company.barmanager.model.Bar;
 import com.company.barmanager.model.Item;
+import com.company.barmanager.model.Type;
 import com.company.barmanager.model.User;
 import com.company.barmanager.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,30 @@ public class InitData implements CommandLineRunner {
     SaleService saleService;
     @Autowired
     UserService userService;
+    @Autowired
+    TypeService typeService;
 
     @Override
     public void run(String... args) throws Exception {
+        Type type1 = new Type();
+        type1.setTypeName("shots");
+        typeService.save(type1);
+
+        Type type2 = new Type();
+        type2.setTypeName("RTD");
+        typeService.save(type2);
+
+        Type type3 = new Type();
+        type3.setTypeName("Sugar");
+        typeService.save(type3);
+
+
         User user = new User();
         user.setUsername("admin");
         user.setPassword("password");
         userService.save(user);
-
         Bar bar1 = new Bar();
+
 
 
 
@@ -41,26 +57,26 @@ public class InitData implements CommandLineRunner {
         Item i1 = new Item();
         i1.setAmountNo(5);
         i1.setBar(bar1);
-        i1.setPrice(120.5);
         i1.setItemName("beer");
+        i1.setType(type2);
 
         Item i2 = new Item();
         i2.setAmountNo(52);
         i2.setBar(bar1);
-        i2.setPrice(160.5);
         i2.setItemName("vodka");
+        i2.setType(type1);
 
         Item i3 = new Item();
         i3.setAmountNo(2);
         i3.setBar(bar1);
-        i3.setPrice(76.0);
         i3.setItemName("jagg");
+        i3.setType(type2);
 
         Item i4 = new Item();
         i4.setAmountNo(123);
         i4.setBar(bar1);
-        i4.setPrice(123.0);
         i4.setItemName("idk");
+        i4.setType(type3);
 
         List<Item> items1 = new ArrayList<>();
         items1.add(i1);
@@ -83,20 +99,20 @@ public class InitData implements CommandLineRunner {
         Item j1 = new Item();
         j1.setAmountNo(1);
         j1.setBar(bar2);
-        j1.setPrice(120.5);
         j1.setItemName("beer");
+        j1.setType(type2);
 
         Item j2 = new Item();
         j2.setAmountNo(2);
         j2.setBar(bar2);
-        j2.setPrice(160.5);
         j2.setItemName("vodka");
+        j2.setType(type2);
 
         Item j3 = new Item();
         j3.setAmountNo(3);
         j3.setBar(bar2);
-        j3.setPrice(76.0);
         j3.setItemName("jagg");
+        j3.setType(type2);
 
         List<Item> items2 = new ArrayList<>();
         items2.add(j1);
