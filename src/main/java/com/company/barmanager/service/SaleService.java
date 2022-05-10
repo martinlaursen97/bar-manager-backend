@@ -1,9 +1,12 @@
 package com.company.barmanager.service;
 
+import com.company.barmanager.model.Item;
 import com.company.barmanager.model.Sale;
 import com.company.barmanager.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SaleService {
@@ -18,4 +21,18 @@ public class SaleService {
   public Sale save(Sale sale){
     return saleRepository.save(sale);
   }
+
+  public List<Sale> findAll(){
+    return saleRepository.findAll();
+  }
+  public void deleteById(Long id){
+    saleRepository.deleteById(id);
+  }
+
+  public List<Sale> getSaleByBarId(Long id){
+    return saleRepository.getSaleByBarId(id);
+  }
+
 }
+
+
