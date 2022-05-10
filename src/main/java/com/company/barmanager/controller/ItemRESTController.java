@@ -22,6 +22,7 @@ public class ItemRESTController {
   }
   @PostMapping()
   public ResponseEntity<Item> createItem(@RequestBody Item item){
+    System.out.println(item);
     return new ResponseEntity<>(itemService.save(item), HttpStatus.CREATED);
   }
 
