@@ -25,4 +25,8 @@ public class UserService {
         return userRepository.findByUsernamePasswordMatch(user.getUsername(), user.getPassword())
                 .orElseThrow(() -> new LoginException("User not found"));
     }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
 }
