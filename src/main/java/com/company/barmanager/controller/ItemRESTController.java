@@ -29,9 +29,15 @@ public class ItemRESTController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword, @RequestParam Optional<Long> barId){
-    if (keyword.isPresent()&& barId.isPresent()) {
+  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword, @RequestParam Optional<Long> barId, @RequestParam Optional<Long> typeId){
+    if (keyword.isPresent()&& barId.isPresent() && !typeId.isPresent()){
       return new ResponseEntity<>(itemService.getItemsByItemNameAndBarId(keyword.get(), barId.get()), HttpStatus.OK);
+    }
+    if (!keyword.isPresent()&& barId.isPresent() && typeId.isPresent()){
+      return new ResponseEntity<>(itemService.getItemsByBarIdAndTypeId(barId.get(), typeId.get()), HttpStatus.OK);
+    }
+    if (keyword.isPresent()&& barId.isPresent()&& typeId.isPresent()) {
+      return new ResponseEntity<>(itemService.getItemsByItemNameAndBarIdAndTypeId(keyword.get(), barId.get(), typeId.get()), HttpStatus.OK);
     }
 
     return new ResponseEntity<>(itemService.findAll(), HttpStatus.OK);

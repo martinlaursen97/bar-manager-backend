@@ -33,7 +33,15 @@ public class ItemService {
     return itemRepository.getItemsByBarId(id);
   }
 
+  public List<Item> getItemsByItemNameAndBarIdAndTypeId(String keyword, Long barId, Long typeId) {
+    return itemRepository.getItemsByItemNameAndBarIdAndTypeId(keyword, barId, typeId);
+  }
+
   public List<Item> getItemsByItemNameAndBarId(String keyword, Long barId) {
     return itemRepository.getItemsByItemNameAndBarId(keyword, barId);
+  }
+
+  public List<Item> getItemsByBarIdAndTypeId(Long barId, Long typeId) {
+    return itemRepository.getItemsByBarIdAndTypeId(barId, typeId);
   }
 }

@@ -10,5 +10,9 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> getItemsByBarId(Long id);
 
+  List<Item> getItemsByItemNameAndBarIdAndTypeId(String keyword, Long barId, Long typeId);
+
   List<Item> getItemsByItemNameAndBarId(String keyword, Long barId);
+
+  List<Item> getItemsByBarIdAndTypeId(Long barId, Long typeId);
 }
