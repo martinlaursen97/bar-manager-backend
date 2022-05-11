@@ -29,9 +29,9 @@ public class ItemRESTController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword){
-    if (keyword.isPresent()) {
-      return new ResponseEntity<>(itemService.getItemsByItemName(keyword.get()), HttpStatus.OK);
+  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword, @RequestParam Optional<Long> barId){
+    if (keyword.isPresent()&& barId.isPresent()) {
+      return new ResponseEntity<>(itemService.getItemsByItemNameAndBarId(keyword.get(), barId.get()), HttpStatus.OK);
     }
 
     return new ResponseEntity<>(itemService.findAll(), HttpStatus.OK);
