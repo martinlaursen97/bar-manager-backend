@@ -3,11 +3,13 @@ package com.company.barmanager.controller;
 import com.company.barmanager.model.Item;
 import com.company.barmanager.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -27,7 +29,11 @@ public class ItemRESTController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Item>> getItems(){
+  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword){
+    if (keyword.isPresent()) {
+      return new ResponseEntity<>(itemService.getItemsByItemName(keyword.get()), HttpStatus.OK);
+    }
+
     return new ResponseEntity<>(itemService.findAll(), HttpStatus.OK);
   }
 

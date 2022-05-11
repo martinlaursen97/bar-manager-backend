@@ -32,4 +32,8 @@ public class ItemService {
   public List<Item> getItemsByBarId(Long id) {
     return itemRepository.getItemsByBarId(id);
   }
+
+  public List<Item> getItemsByItemName(String keyword) {
+    return itemRepository.getItemsByItemName(keyword);
+  }
 }
