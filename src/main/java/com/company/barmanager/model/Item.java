@@ -19,7 +19,7 @@ public class Item {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @JsonBackReference
+
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "bar_id")
   private Bar bar;

@@ -1,5 +1,6 @@
 package com.company.barmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,6 +22,7 @@ public class Bar {
   @Column(name = "bar_name")
   private String barName;
 
+  @JsonBackReference
   @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
   private List<Item> items;
 
