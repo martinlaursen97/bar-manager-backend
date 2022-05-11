@@ -84,7 +84,7 @@ public class InitData implements CommandLineRunner {
         items1.add(i3);
         items1.add(i4);
 
-        bar1.setItems(items1);
+
 
         barService.save(bar1);
         itemService.save(i1);
@@ -119,7 +119,7 @@ public class InitData implements CommandLineRunner {
         items2.add(j2);
         items2.add(j3);
 
-        bar2.setItems(items2);
+
 
         barService.save(bar2);
         itemService.save(j1);

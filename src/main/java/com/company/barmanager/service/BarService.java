@@ -1,5 +1,7 @@
 package com.company.barmanager.service;
 
+import com.company.barmanager.exception.BarNotFoundException;
+import com.company.barmanager.exception.LoginException;
 import com.company.barmanager.model.Bar;
 import com.company.barmanager.repository.BarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +26,11 @@ public class BarService {
 
     public Bar save(Bar bar) {
         return barRepository.save(bar);
+    }
+
+    public Bar findById(Long id) throws BarNotFoundException {
+        return barRepository.findById(id).orElseThrow(
+                () -> new BarNotFoundException("Bar not found")
+        );
     }
 }

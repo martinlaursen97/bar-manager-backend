@@ -48,11 +48,12 @@ public class ItemRESTController {
     return new ResponseEntity<>(itemService.getItemsByBarId(id), HttpStatus.OK);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item){
-    item.setId(id);
+  @PutMapping
+  public ResponseEntity<Item> updateItem(@RequestBody Item item){
+    System.out.println(item);
     return new ResponseEntity<>(itemService.save(item), HttpStatus.OK);
   }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<Item> deleteItem(@PathVariable Long id){
     itemService.deleteById(id);
