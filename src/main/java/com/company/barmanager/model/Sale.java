@@ -26,4 +26,7 @@ public class Sale {
 
   @Column(name = "tuborg_total")
   private Double tuborgTotal;
+
+  @Column(name = "revenue")
+  private Double revenue;
 }
