@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SaleLineItemService {
     private final SaleLineItemRepository saleLineItemRepository;
+
     @Autowired
     public SaleLineItemService(SaleLineItemRepository saleLineItemRepository){
         this.saleLineItemRepository = saleLineItemRepository;
