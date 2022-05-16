@@ -21,6 +21,9 @@ public class Sale {
   @Column(name = "sale_date")
   private Date saleDate;
 
-  @Column(name = "total_price")
-  private Double totalPrice;
+  @Column(name = "inco_total")
+  private Double incoTotal;
+
+  @Column(name = "tuborg_total")
+  private Double tuborgTotal;
 }
