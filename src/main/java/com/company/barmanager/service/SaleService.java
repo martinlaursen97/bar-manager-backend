@@ -5,6 +5,8 @@ import com.company.barmanager.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SaleService {
   private final SaleRepository saleRepository;
@@ -17,5 +19,9 @@ public class SaleService {
 
   public Sale save(Sale sale){
     return saleRepository.save(sale);
+  }
+
+  public List<Sale> findAll() {
+    return saleRepository.findAll();
   }
 }

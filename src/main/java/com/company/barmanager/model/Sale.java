@@ -1,10 +1,13 @@
 package com.company.barmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,13 +22,7 @@ public class Sale {
   private Long id;
 
   @Column(name = "sale_date")
-  private Date saleDate;
-
-  @Column(name = "inco_total")
-  private Double incoTotal;
-
-  @Column(name = "tuborg_total")
-  private Double tuborgTotal;
+  private LocalDate saleDate;
 
   @Column(name = "revenue")
   private Double revenue;
