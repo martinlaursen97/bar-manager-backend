@@ -5,6 +5,8 @@ import com.company.barmanager.repository.SaleLineItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SaleLineItemService {
     private final SaleLineItemRepository saleLineItemRepository;
@@ -17,6 +19,10 @@ public class SaleLineItemService {
 
     public SaleLineItem save(SaleLineItem saleLineItem){
         return saleLineItemRepository.save(saleLineItem);
+    }
+
+    public List<SaleLineItem> getSaleLineItemsBySaleId(Long id) {
+        return saleLineItemRepository.getSaleLineItemsBySaleId(id);
     }
 }
 

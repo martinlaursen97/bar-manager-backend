@@ -22,9 +22,13 @@ public class Bar {
   @Column(name = "bar_name")
   private String barName;
 
-  @JsonBackReference
+  @JsonBackReference(value = "items")
   @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
   private List<Item> items;
+
+  @JsonBackReference(value = "sales")
+  @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
+  private List<Sale> sales;
 
 
 

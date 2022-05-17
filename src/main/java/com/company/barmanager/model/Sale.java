@@ -21,6 +21,10 @@ public class Sale {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "bar_id")
+  private Bar bar;
+
   @Column(name = "sale_date")
   private LocalDate saleDate;
 

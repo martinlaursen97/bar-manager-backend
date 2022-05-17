@@ -1,5 +1,6 @@
 package com.company.barmanager.controller;
 
+import com.company.barmanager.model.Item;
 import com.company.barmanager.model.Sale;
 import com.company.barmanager.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,8 @@ public class SaleRESTController {
     return new ResponseEntity<>(saleService.findAll(), HttpStatus.OK);
   }
 
-  @GetMapping("/test")
-  public String getTest(){
-    LocalDate saleDate = LocalDate.now();
-    String str = saleDate.toString();
-    return str;
+  @GetMapping("/bar/{id}")
+  public ResponseEntity<List<Sale>> getSalesByBarId(@PathVariable Long id){
+    return new ResponseEntity<>(saleService.getSalesByBarId(id), HttpStatus.OK);
   }
 }

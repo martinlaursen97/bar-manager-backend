@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("api/sale-line-items")
@@ -22,6 +24,11 @@ public class SaleLineItemRESTController {
     @PostMapping
     public ResponseEntity<SaleLineItem> createSaleLineItem(@RequestBody SaleLineItem saleLineItem) {
         return new ResponseEntity<>(saleLineItemService.save(saleLineItem), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/sale/{id}")
+    public ResponseEntity<List<SaleLineItem>> getSaleLineItemsBySaleId(@PathVariable Long id) {
+        return new ResponseEntity<>(saleLineItemService.getSaleLineItemsBySaleId(id), HttpStatus.OK);
     }
 
 

@@ -24,4 +24,8 @@ public class SaleService {
   public List<Sale> findAll() {
     return saleRepository.findAll();
   }
+
+  public List<Sale> getSalesByBarId(Long id) {
+    return saleRepository.getSalesByBarId(id);
+  }
 }
