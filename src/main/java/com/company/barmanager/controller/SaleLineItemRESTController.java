@@ -1,5 +1,7 @@
 package com.company.barmanager.controller;
 
+import com.company.barmanager.model.ItemDTO;
+import com.company.barmanager.model.Sale;
 import com.company.barmanager.model.SaleLineItem;
 import com.company.barmanager.service.SaleLineItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,15 @@ public class SaleLineItemRESTController {
     @GetMapping("/sale/{id}")
     public ResponseEntity<List<SaleLineItem>> getSaleLineItemsBySaleId(@PathVariable Long id) {
         return new ResponseEntity<>(saleLineItemService.getSaleLineItemsBySaleId(id), HttpStatus.OK);
+    }
+
+    @GetMapping ("/test")
+    public ResponseEntity<List<ItemDTO>> test(){
+        List<ItemDTO> saleLineItems = saleLineItemService.test();
+        for(ItemDTO s : saleLineItems){
+            System.out.println(s);
+        }
+        return new ResponseEntity<>(saleLineItems, HttpStatus.OK);
     }
 
 

@@ -1,5 +1,7 @@
 package com.company.barmanager.service;
 
+import com.company.barmanager.model.ItemDTO;
+import com.company.barmanager.model.Sale;
 import com.company.barmanager.model.SaleLineItem;
 import com.company.barmanager.repository.SaleLineItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,10 @@ public class SaleLineItemService {
 
     public List<SaleLineItem> getSaleLineItemsBySaleId(Long id) {
         return saleLineItemRepository.getSaleLineItemsBySaleId(id);
+    }
+
+    public List<ItemDTO> test() {
+        return saleLineItemRepository.test();
     }
 }
 
