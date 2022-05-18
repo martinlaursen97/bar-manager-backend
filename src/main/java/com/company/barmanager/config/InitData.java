@@ -1,9 +1,6 @@
 package com.company.barmanager.config;
 
-import com.company.barmanager.model.Bar;
-import com.company.barmanager.model.Item;
-import com.company.barmanager.model.Type;
-import com.company.barmanager.model.User;
+import com.company.barmanager.model.*;
 import com.company.barmanager.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,6 +27,8 @@ public class InitData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+
         Type type1 = new Type();
         type1.setTypeName("Shots");
         typeService.save(type1);
@@ -103,8 +102,6 @@ public class InitData implements CommandLineRunner {
         items1.add(i6);
 
 
-
-
         barService.save(bar1);
         itemService.save(i1);
         itemService.save(i2);
@@ -154,6 +151,38 @@ public class InitData implements CommandLineRunner {
         itemService.save(j2);
         itemService.save(j3);
         itemService.save(j4);
+
+        Sale sale1 = new Sale();
+
+        saleService.save(sale1);
+
+
+        SaleLineItem saleLineItem1 = new SaleLineItem();
+        SaleLineItem saleLineItem2 = new SaleLineItem();
+        SaleLineItem saleLineItem3 = new SaleLineItem();
+        SaleLineItem saleLineItem4 = new SaleLineItem();
+
+        saleLineItem1.setItem(i1);
+        saleLineItem2.setItem(i1);
+        saleLineItem3.setItem(i2);
+        saleLineItem4.setItem(i2);
+
+        saleLineItem1.setAmountNo(5);
+        saleLineItem2.setAmountNo(7);
+        saleLineItem3.setAmountNo(10);
+        saleLineItem4.setAmountNo(3);
+
+        saleLineItem1.setSale(sale1);
+        saleLineItem2.setSale(sale1);
+        saleLineItem3.setSale(sale1);
+        saleLineItem4.setSale(sale1);
+
+
+
+        saleLineItemService.save(saleLineItem1);
+        saleLineItemService.save(saleLineItem2);
+        saleLineItemService.save(saleLineItem3);
+        saleLineItemService.save(saleLineItem4);
 
     }
 }
