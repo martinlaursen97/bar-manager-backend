@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.temporal.WeekFields;
 
 @Entity
 @Getter
@@ -22,11 +23,14 @@ public class Expense {
     private Bar bar;
 
     @Column(name = "expense_date")
-    private LocalDate expenseDate;
+    private String expenseDateStr;
 
     @Column(name = "inco_total")
     private Double incoTotal;
 
     @Column(name = "tuborg_total")
     private Double tuborgTotal;
+
+    @Column(name = "total_expense")
+    private Double totalExpense;
 }
