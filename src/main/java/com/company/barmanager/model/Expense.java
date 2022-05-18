@@ -17,6 +17,10 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "bar_id")
+    private Bar bar;
+
     @Column(name = "expense_date")
     private LocalDate expenseDate;
 

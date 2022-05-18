@@ -50,7 +50,6 @@ public class ItemRESTController {
 
   @PutMapping
   public ResponseEntity<Item> updateItem(@RequestBody Item item){
-    System.out.println(item);
     return new ResponseEntity<>(itemService.save(item), HttpStatus.OK);
   }
 

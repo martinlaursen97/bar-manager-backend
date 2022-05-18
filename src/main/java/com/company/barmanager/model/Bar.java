@@ -30,6 +30,10 @@ public class Bar {
   @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
   private List<Sale> sales;
 
+  @JsonBackReference(value = "expenses")
+  @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
+  private List<Expense> expenses;
+
 
 
 }
