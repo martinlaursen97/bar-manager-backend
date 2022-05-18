@@ -1,5 +1,6 @@
-package com.company.barmanager.model;
+package com.company.barmanager.dto;
 
+import com.company.barmanager.model.Item;
 import lombok.ToString;
 
 public class ItemDTO {

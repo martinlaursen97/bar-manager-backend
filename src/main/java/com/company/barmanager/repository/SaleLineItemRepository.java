@@ -1,6 +1,6 @@
 package com.company.barmanager.repository;
 
-import com.company.barmanager.model.ItemDTO;
+import com.company.barmanager.dto.ItemDTO;
 import com.company.barmanager.model.SaleLineItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,15 +12,15 @@ import java.util.List;
 public interface SaleLineItemRepository extends JpaRepository<SaleLineItem, Long> {
     List<SaleLineItem> getSaleLineItemsBySaleId(Long id);
 
-    //@Query("select new com.company.barmanager.model.ItemDTO(s.item.id, sum(s.amountNo)) from SaleLineItem as s group by s.amountNo")
     @Query("SELECT " +
-        "    new com.company.barmanager.model.ItemDTO(s.item, SUM(s.amountNo)) " +
+        "    new com.company.barmanager.dto.ItemDTO(s.item, SUM(s.amountNo)) " +
         "FROM " +
         "    SaleLineItem s " +
+        "INNER JOIN " +
+        "    Item i ON s.item.id = i.id " +
+        "WHERE " +
+        "   i.bar.id = ?1 " +
         "GROUP BY " +
         "    s.item.id")
-  List<ItemDTO> test();
-
-
-
+  List<ItemDTO> getItemDTOByBarId(Long id);
 }
