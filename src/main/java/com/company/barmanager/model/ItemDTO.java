@@ -1,6 +1,10 @@
 package com.company.barmanager.model;
 
+import lombok.ToString;
+
 public class ItemDTO {
+
+  @ToString.Exclude
   private Item item;
   private Long sum;
 
@@ -28,8 +32,8 @@ public class ItemDTO {
   @Override
   public String toString() {
     return "ItemDTO{" +
-        "item=" + item +
-        ", sum=" + sum +
-        '}';
+            "item=" + item +
+            ", sum=" + sum +
+            '}';
   }
 }

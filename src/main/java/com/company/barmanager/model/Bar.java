@@ -24,14 +24,17 @@ public class Bar {
 
   @JsonBackReference(value = "items")
   @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
+  @ToString.Exclude
   private List<Item> items;
 
   @JsonBackReference(value = "sales")
   @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
+  @ToString.Exclude
   private List<Sale> sales;
 
   @JsonBackReference(value = "expenses")
   @OneToMany(mappedBy = "bar", cascade = CascadeType.MERGE)
+  @ToString.Exclude
   private List<Expense> expenses;
 
 
