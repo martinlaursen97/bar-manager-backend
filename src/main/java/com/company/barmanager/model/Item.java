@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -28,9 +29,18 @@ public class Item {
   @JoinColumn(name = "type_id")
   private Type type;
 
+  @JsonBackReference(value = "saleLineItems")
+  @OneToMany(mappedBy = "item", cascade = CascadeType.MERGE)
+  @ToString.Exclude
+  private List<SaleLineItem> saleLineItems;
+
   @Column(name = "item_name")
   private String itemName;
 
   @Column(name = "amount_no")
   private Integer amountNo;
+
+  @Column(name = "active")
+  private Boolean isActive;
+
 }

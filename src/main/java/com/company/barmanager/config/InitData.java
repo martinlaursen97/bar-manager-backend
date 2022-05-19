@@ -62,36 +62,42 @@ public class InitData implements CommandLineRunner {
         i1.setBar(bar1);
         i1.setItemName("Tuborg");
         i1.setType(type2);
+        i1.setIsActive(true);
 
         Item i2 = new Item();
         i2.setAmountNo(52);
         i2.setBar(bar1);
         i2.setItemName("Vodka");
         i2.setType(type4);
+        i2.setIsActive(true);
 
         Item i3 = new Item();
         i3.setAmountNo(2);
         i3.setBar(bar1);
         i3.setItemName("Jägger meister");
         i3.setType(type1);
+        i3.setIsActive(true);
 
         Item i4 = new Item();
         i4.setAmountNo(123);
         i4.setBar(bar1);
         i4.setItemName("Cola");
         i4.setType(type3);
+        i4.setIsActive(true);
 
         Item i5 = new Item();
         i5.setAmountNo(23);
         i5.setBar(bar1);
         i5.setItemName("Carlsberg");
         i5.setType(type2);
+        i5.setIsActive(true);
 
         Item i6 = new Item();
         i6.setAmountNo(23);
         i6.setBar(bar1);
         i6.setItemName("Blanc 1664");
         i6.setType(type2);
+        i6.setIsActive(true);
 
         List<Item> items1 = new ArrayList<>();
         items1.add(i1);

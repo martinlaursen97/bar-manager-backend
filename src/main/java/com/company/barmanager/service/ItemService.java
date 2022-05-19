@@ -44,4 +44,13 @@ public class ItemService {
   public List<Item> getItemsByBarIdAndTypeId(Long barId, Long typeId) {
     return itemRepository.getItemsByBarIdAndTypeId(barId, typeId);
   }
+
+
+  public void setActiveById(Long id) {
+    itemRepository.setActiveById(id);
+  }
+
+  public List<Item> getActiveItemsByBarId(Long id) {
+    return itemRepository.getActiveItemsByBarId(id);
+  }
 }

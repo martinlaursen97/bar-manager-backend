@@ -19,24 +19,25 @@ public class ItemRESTController {
   private final ItemService itemService;
 
   @Autowired
-  public ItemRESTController (ItemService itemService){
+  public ItemRESTController(ItemService itemService) {
     this.itemService = itemService;
   }
+
   @PostMapping()
-  public ResponseEntity<Item> createItem(@RequestBody Item item){
+  public ResponseEntity<Item> createItem(@RequestBody Item item) {
     System.out.println(item);
     return new ResponseEntity<>(itemService.save(item), HttpStatus.CREATED);
   }
 
   @GetMapping
-  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword, @RequestParam Optional<Long> barId, @RequestParam Optional<Long> typeId){
-    if (keyword.isPresent()&& barId.isPresent() && !typeId.isPresent()){
+  public ResponseEntity<List<Item>> getItems(@RequestParam Optional<String> keyword, @RequestParam Optional<Long> barId, @RequestParam Optional<Long> typeId) {
+    if (keyword.isPresent() && barId.isPresent() && !typeId.isPresent()) {
       return new ResponseEntity<>(itemService.getItemsByItemNameAndBarId(keyword.get(), barId.get()), HttpStatus.OK);
     }
-    if (!keyword.isPresent()&& barId.isPresent() && typeId.isPresent()){
+    if (!keyword.isPresent() && barId.isPresent() && typeId.isPresent()) {
       return new ResponseEntity<>(itemService.getItemsByBarIdAndTypeId(barId.get(), typeId.get()), HttpStatus.OK);
     }
-    if (keyword.isPresent()&& barId.isPresent()&& typeId.isPresent()) {
+    if (keyword.isPresent() && barId.isPresent() && typeId.isPresent()) {
       return new ResponseEntity<>(itemService.getItemsByItemNameAndBarIdAndTypeId(keyword.get(), barId.get(), typeId.get()), HttpStatus.OK);
     }
 
@@ -44,19 +45,30 @@ public class ItemRESTController {
   }
 
   @GetMapping("/bar/{id}")
-  public ResponseEntity<List<Item>> getItemsByBarId(@PathVariable Long id){
+  public ResponseEntity<List<Item>> getItemsByBarId(@PathVariable Long id) {
     return new ResponseEntity<>(itemService.getItemsByBarId(id), HttpStatus.OK);
   }
 
   @PutMapping
-  public ResponseEntity<Item> updateItem(@RequestBody Item item){
+  public ResponseEntity<Item> updateItem(@RequestBody Item item) {
     return new ResponseEntity<>(itemService.save(item), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Item> deleteItem(@PathVariable Long id){
+  public ResponseEntity<Item> deleteItem(@PathVariable Long id) {
     itemService.deleteById(id);
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
+  @PutMapping("/set-active/{id}")
+  public ResponseEntity<Item> setActiveById(@PathVariable Long id) {
+    itemService.setActiveById(id);
+    System.out.println(id);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+  @GetMapping("/active/bar/{id}")
+  public ResponseEntity<List<Item>> getActiveItemsByBarId(@PathVariable Long id) {
+    return new ResponseEntity<>(itemService.getActiveItemsByBarId(id), HttpStatus.OK);
+  }
 }
