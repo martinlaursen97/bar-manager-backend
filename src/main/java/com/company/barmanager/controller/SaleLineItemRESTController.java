@@ -37,4 +37,6 @@ public class SaleLineItemRESTController {
         List<ItemDTO> itemDTOS = saleLineItemService.getItemDTOByBarId(id);
         return new ResponseEntity<>(itemDTOS, HttpStatus.OK);
     }
+
+
 }

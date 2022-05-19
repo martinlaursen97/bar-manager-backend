@@ -5,6 +5,7 @@ import com.company.barmanager.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,5 +28,9 @@ public class SaleService {
 
   public List<Sale> getSalesByBarId(Long id) {
     return saleRepository.getSalesByBarId(id);
+  }
+
+  public List<Sale> getSalesByDateAndBarId(Long id, LocalDate date1, LocalDate date2) {
+    return saleRepository.getSalesByDateAndBarId(id, date1, date2);
   }
 }

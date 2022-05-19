@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,8 +160,21 @@ public class InitData implements CommandLineRunner {
         itemService.save(j4);
 
         Sale sale1 = new Sale();
+        Sale sale2 = new Sale();
+
+
+
+        sale1.setBar(bar1);
+        sale1.setSaleDate(LocalDate.now());
+        sale1.setRevenue(1999.);
+
+        sale2.setBar(bar1);
+        sale2.setSaleDate(LocalDate.now());
+        sale2.setRevenue(5000.);
+
 
         saleService.save(sale1);
+        saleService.save(sale2);
 
 
         SaleLineItem saleLineItem1 = new SaleLineItem();
