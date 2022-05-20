@@ -6,6 +6,7 @@ import com.company.barmanager.repository.SaleLineItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,8 +27,8 @@ public class SaleLineItemService {
         return saleLineItemRepository.getSaleLineItemsBySaleId(id);
     }
 
-    public List<ItemDTO> getItemDTOByBarId(Long id) {
-        return saleLineItemRepository.getItemDTOByBarId(id);
+    public List<ItemDTO> getItemDTOByBarId(Long id, LocalDate date1, LocalDate date2) {
+        return saleLineItemRepository.getItemDTOByBarId(id, date1, date2);
     }
 }
 
