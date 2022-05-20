@@ -2,6 +2,7 @@ package com.company.barmanager.service;
 
 
 import com.company.barmanager.exception.LoginException;
+import com.company.barmanager.exception.UsernameTakenException;
 import com.company.barmanager.model.User;
 import com.company.barmanager.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
@@ -43,7 +44,7 @@ class UserServiceTest {
     }
 
     @Test
-    void createUser() {
+    void createUser() throws UsernameTakenException {
         User user = new User();
         user.setUsername("erik");
         user.setPassword("123");
