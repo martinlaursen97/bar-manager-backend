@@ -13,7 +13,9 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
    List<Sale> getSalesByBarId(Long id);
 
    @Query("SELECT s FROM Sale s WHERE s.saleDate >= ?2 AND s.saleDate <= ?3 AND s.bar.id = ?1 ORDER BY s.saleDate")
-  List<Sale> getSalesByDateAndBarId(Long id, LocalDate date1, LocalDate date2);
+   List<Sale> getSalesByDateAndBarId(Long id, LocalDate date1, LocalDate date2);
 
 
+   @Query("SELECT s FROM Sale s WHERE s.bar.id = ?1 AND s.saleDate = ?2")
+   List<Sale> findBySaleDateAndBarId(Long id, LocalDate date);
 }

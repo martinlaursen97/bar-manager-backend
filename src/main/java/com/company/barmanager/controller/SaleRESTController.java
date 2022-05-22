@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -32,8 +33,12 @@ public class SaleRESTController {
   }
 
   @GetMapping()
-  public ResponseEntity<List<Sale>> getSales(){
-    return new ResponseEntity<>(saleService.findAll(), HttpStatus.OK);
+  public ResponseEntity<List<Sale>> getSales(@RequestParam(name = "barId") Long id, @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam Optional<LocalDate> date) {
+    if (date.isPresent()) {
+      return new ResponseEntity<>(saleService.findBySaleDateAndBarId(id, date.get()), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(saleService.findAll(), HttpStatus.OK);
+    }
   }
 
   @GetMapping("/bar/{id}")
@@ -43,7 +48,6 @@ public class SaleRESTController {
 
   @GetMapping("/statistics/{id}/{date1}/{date2}")
   public ResponseEntity<List<Sale>> getSalesByDateAndById(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2){
-    System.out.println(date1 + " " + date2);
     return new ResponseEntity<>(saleService.getSalesByDateAndBarId(id, date1, date2), HttpStatus.OK);
   }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SaleService {
@@ -33,4 +34,8 @@ public class SaleService {
   public List<Sale> getSalesByDateAndBarId(Long id, LocalDate date1, LocalDate date2) {
     return saleRepository.getSalesByDateAndBarId(id, date1, date2);
   }
+
+    public List<Sale> findBySaleDateAndBarId(Long id, LocalDate date) {
+      return saleRepository.findBySaleDateAndBarId(id, date);
+    }
 }
