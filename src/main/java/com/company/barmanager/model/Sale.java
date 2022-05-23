@@ -34,7 +34,7 @@ public class Sale {
   private Double revenue;
 
   @JsonBackReference(value = "saleLineItem")
-  @OneToMany(mappedBy = "sale", cascade = CascadeType.MERGE)
+  @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
   @ToString.Exclude
   private List<SaleLineItem> saleLineItems;
 }
