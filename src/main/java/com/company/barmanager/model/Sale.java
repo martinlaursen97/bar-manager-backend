@@ -30,4 +30,7 @@ public class Sale {
 
   @Column(name = "revenue")
   private Double revenue;
+
+  @Column(name = "product_calculation")
+  private Double productCalculation;
 }
