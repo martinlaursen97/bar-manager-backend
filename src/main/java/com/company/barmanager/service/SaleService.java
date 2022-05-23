@@ -38,4 +38,8 @@ public class SaleService {
     public List<Sale> findBySaleDateAndBarId(Long id, LocalDate date) {
       return saleRepository.findBySaleDateAndBarId(id, date);
     }
+
+  public void deleteSaleById(Long id) {
+    saleRepository.deleteById(id);
+  }
 }

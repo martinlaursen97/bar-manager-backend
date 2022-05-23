@@ -50,4 +50,11 @@ public class SaleRESTController {
   public ResponseEntity<List<Sale>> getSalesByDateAndById(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2){
     return new ResponseEntity<>(saleService.getSalesByDateAndBarId(id, date1, date2), HttpStatus.OK);
   }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Sale> deleteSaleById(@PathVariable Long id){
+    saleService.deleteSaleById(id);
+    System.out.println(id);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
 }
