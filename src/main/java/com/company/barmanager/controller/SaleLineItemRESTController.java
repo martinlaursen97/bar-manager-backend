@@ -35,7 +35,9 @@ public class SaleLineItemRESTController {
     }
 
     @GetMapping ("/statistics/bar/{id}/{date1}/{date2}")
-    public ResponseEntity<List<ItemDTO>> getItemDTOByBarId(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2){
+    public ResponseEntity<List<ItemDTO>> getItemDTOByBarId(@PathVariable Long id,
+                                                           @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1,
+                                                           @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2){
         List<ItemDTO> itemDTOS = saleLineItemService.getItemDTOByBarId(id, date1, date2);
         return new ResponseEntity<>(itemDTOS, HttpStatus.OK);
     }

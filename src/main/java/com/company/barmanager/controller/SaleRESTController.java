@@ -1,5 +1,6 @@
 package com.company.barmanager.controller;
 
+import com.company.barmanager.dto.TypeDTO;
 import com.company.barmanager.model.Item;
 import com.company.barmanager.model.Sale;
 import com.company.barmanager.service.SaleService;
@@ -47,7 +48,9 @@ public class SaleRESTController {
   }
 
   @GetMapping("/statistics/{id}/{date1}/{date2}")
-  public ResponseEntity<List<Sale>> getSalesByDateAndById(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2){
+  public ResponseEntity<List<Sale>> getSalesByDateAndById(@PathVariable Long id,
+                                                          @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1,
+                                                          @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2){
     return new ResponseEntity<>(saleService.getSalesByDateAndBarId(id, date1, date2), HttpStatus.OK);
   }
 
@@ -56,5 +59,14 @@ public class SaleRESTController {
     saleService.deleteSaleById(id);
     System.out.println(id);
     return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+  @GetMapping("/statistics/types/bar/{id}/{date1}/{date2}")
+  public ResponseEntity<List<TypeDTO>> getTypeDTOByBarId(@PathVariable Long id,
+                                                         @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date1,
+                                                         @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date2) {
+
+  return new ResponseEntity<>(saleService.getTypeDTOByBarId(id, date1, date2), HttpStatus.OK);
+
   }
 }
