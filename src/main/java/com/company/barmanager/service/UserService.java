@@ -21,16 +21,14 @@ public class UserService {
     }
 
     public User save(User user) throws UsernameTakenException {
-        if(!usernameTaken(user.getUsername())) {
+        if(userRepository.usernameTaken(user.getUsername()).isEmpty()) {
             return userRepository.save(user);
         }else{
             throw new UsernameTakenException("Username taken");
         }
     }
 
-    public Boolean usernameTaken(String username){
-        return userRepository.usernameTaken(username) != null;
-    }
+
 
     public User verifyLogin(User user) throws LoginException {
         return userRepository.findByUsernamePasswordMatch(user.getUsername(), user.getPassword())

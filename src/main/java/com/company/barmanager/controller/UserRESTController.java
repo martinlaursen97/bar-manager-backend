@@ -25,7 +25,7 @@ public class UserRESTController {
 
     @PostMapping()
     public ResponseEntity<User> createUser(@RequestBody User user) throws UsernameTakenException {
-
+        System.out.println(user);
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
