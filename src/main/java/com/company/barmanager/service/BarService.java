@@ -1,12 +1,11 @@
 package com.company.barmanager.service;
 
+import com.company.barmanager.exception.BarNameTakenException;
 import com.company.barmanager.exception.BarNotFoundException;
-import com.company.barmanager.exception.LoginException;
 import com.company.barmanager.model.Bar;
 import com.company.barmanager.repository.BarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -24,9 +23,16 @@ public class BarService {
         return barRepository.findAll();
     }
 
-    public Bar save(Bar bar) {
-        return barRepository.save(bar);
+    public Bar save(Bar bar) throws BarNameTakenException {
+        if (barRepository.findBarByBarName(bar.getBarName()).isEmpty()) {
+            return barRepository.save(bar);
+        } else {
+
+            throw new BarNameTakenException("Bar name already exists");
+        }
     }
+
+
 
     public Bar findById(Long id) throws BarNotFoundException {
         return barRepository.findById(id).orElseThrow(

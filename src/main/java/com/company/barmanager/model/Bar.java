@@ -19,7 +19,7 @@ public class Bar {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "bar_name")
+  @Column(name = "bar_name", unique = true)
   private String barName;
 
   @JsonBackReference(value = "items")

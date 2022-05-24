@@ -1,5 +1,6 @@
 package com.company.barmanager.controller;
 
+import com.company.barmanager.exception.BarNameTakenException;
 import com.company.barmanager.exception.BarNotFoundException;
 import com.company.barmanager.model.Bar;
 import com.company.barmanager.service.BarService;
@@ -30,6 +31,12 @@ public class BarRESTController {
     @GetMapping("/{id}")
     public ResponseEntity<Bar> getBarById(@PathVariable Long id) throws BarNotFoundException {
         return new ResponseEntity<>(barService.findById(id), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Bar> createBar(@RequestBody Bar bar) throws BarNameTakenException {
+        System.out.println(bar.getBarName());
+        return new ResponseEntity<>(barService.save(bar), HttpStatus.OK);
     }
 
 }
