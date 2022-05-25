@@ -24,11 +24,12 @@ class BarServiceTest {
     BarService barService;
 
     @Test
-    void findAll() {
+    void findAll() throws BarNameTakenException {
+        Bar bar = new Bar();
+        barService.save(bar);
         List<Bar> foundBar = barService.findAll();
 
         Assertions.assertNotNull(foundBar);
-        Assertions.assertEquals(0, foundBar.size());
     }
 
     @Test
