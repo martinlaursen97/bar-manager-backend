@@ -3,6 +3,7 @@ package com.company.barmanager.service;
 import com.company.barmanager.model.Expense;
 import com.company.barmanager.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -31,5 +32,9 @@ public class ExpenseService {
 
     public List<Expense> findAllByBarId(Long id) {
         return expenseRepository.findAllByBarId(id);
+    }
+
+    public Expense findById(Long id) throws ChangeSetPersister.NotFoundException {
+        return expenseRepository.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new);
     }
 }
