@@ -4,6 +4,7 @@ package com.company.barmanager.service;
 import com.company.barmanager.model.Item;
 import com.company.barmanager.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public class ItemService {
 
   public Item save(Item item) {
     return itemRepository.save(item);
+  }
+
+  public Item findById(Long id) throws ChangeSetPersister.NotFoundException {
+    return itemRepository.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new);
   }
 
   public List<Item> findAll() {
