@@ -19,7 +19,6 @@ public class SaleService {
     this.saleRepository = saleRepository;
   }
 
-
   public Sale save(Sale sale){
     return saleRepository.save(sale);
   }
