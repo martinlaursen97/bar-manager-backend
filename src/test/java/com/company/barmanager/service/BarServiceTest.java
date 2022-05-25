@@ -28,7 +28,7 @@ class BarServiceTest {
         List<Bar> foundBar = barService.findAll();
 
         Assertions.assertNotNull(foundBar);
-        Assertions.assertEquals(2, foundBar.size());
+        Assertions.assertEquals(0, foundBar.size());
     }
 
     @Test
