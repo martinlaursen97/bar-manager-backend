@@ -4,6 +4,7 @@ import com.company.barmanager.dto.TypeDTO;
 import com.company.barmanager.model.Sale;
 import com.company.barmanager.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -46,4 +47,8 @@ public class SaleService {
     public List<TypeDTO> getTypeDTOByBarId(Long id, LocalDate date1, LocalDate date2) {
       return saleRepository.getTypeDTOByBarId(id, date1, date2);
     }
+
+  public Sale findBySaleId(Long id) throws ChangeSetPersister.NotFoundException {
+    return saleRepository.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new);
+  }
 }
