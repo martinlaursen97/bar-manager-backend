@@ -6,6 +6,7 @@ import com.company.barmanager.exception.UsernameTakenException;
 import com.company.barmanager.model.User;
 import com.company.barmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +42,9 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public User findUserById(Long id) throws ChangeSetPersister.NotFoundException {
+        return userRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
     }
 }
